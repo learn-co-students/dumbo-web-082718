@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import BurgerContainer from './components/BurgerContainer'
 import BurgerDisplay from './components/BurgerDisplay'
