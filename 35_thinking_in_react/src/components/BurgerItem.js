@@ -4,11 +4,11 @@ const BurgerItem = (props) => {
   return (
     <div>
       <div className="BurgerItem">
-        { /* Name of Burger Here */ }
+        { props.burger.name }
       </div>
       <div className="BurgerBottomBun">
-        <button>Show</button>
-        <button>Delete</button>
+        <button onClick={() => props.setSelectedBurger(props.burger.id)}>Show</button>
+        <button onClick={() => props.deleteBurger(props.burger.id)}>Delete</button>
       </div>
     </div>
   )
