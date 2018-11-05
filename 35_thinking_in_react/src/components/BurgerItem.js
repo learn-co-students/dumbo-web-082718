@@ -7,8 +7,8 @@ const BurgerItem = (props) => {
         { /* Name of Burger Here */ }
       </div>
       <div className="BurgerBottomBun">
-        <button onClick={console.log}>Show</button>
-        <button onClick={console.log}>Delete</button>
+        <button>Show</button>
+        <button>Delete</button>
       </div>
     </div>
   )

@@ -1,20 +1,22 @@
 # WELCOME TO THE BOUNTIFUL BURGER APP
 
 This app is your first step towards becoming the world's greatest burger connoisseur. Your app should be able to:
- - List the names of your burgers in a BurgerList
- - When clicking on the 'Show' button below a burger, it should display more info about the burger in the BurgerDisplay area
-   - More info includes the burger category and its image
- - Selecting the dropdown filter should allow you to filter the BurgerList by category
- - BONUS: Changing the burger category on the BurgerDisplay should persist the change to the backend
- - BONUS: Clicking the Hide button should delete the burger from the list (this does **not** need to persist)
+ 
+ * List the names of your burgers in a BurgerList
+ * When clicking on the 'Show' button below a burger, it should display more info about the burger in the BurgerDisplay area
+   * More info includes the burger category and its image
+ * Selecting the dropdown filter should allow you to filter the BurgerList by category
+ * BONUS: Changing the burger category on the BurgerDisplay should persist the change to the backend
+ * BONUS: Clicking the Hide button should delete the burger from the list (this does **not** need to persist)
 
 ## EXAMPLE:
 ![Showcasing the full functionality](burgerz-example.gif)
 
 ### STEP 1: VIEW THE DATA
 All of the burger data is stored in the db.json file. You'll want to access this data using a json server. In order to do this, run the following command:
-  - npm install -g json-server
-  - json-server --watch db.json
+  
+  * `$ npm install -g json-server`
+  * `$ json-server --watch db.json`
 
 This will setup the data on a server using restful routes at http://localhost:3001/burgers.
 
@@ -32,9 +34,9 @@ The category should display as a dropdown, with the default value set to the cat
 ### STEP 4: FILTER BURGERS BY CATEGORY
  When a user changes the value of the select dropdown above the BurgerList, the burgers displayed in the list should change accordingly:
 
- - the 'All' option should display all burgers
- - the 'Bougie' option should display only Bougie burgers
- - the 'Relatable' option should display only Relatable burgers
+ * the 'All' option should display all burgers
+ * the 'Bougie' option should display only Bougie burgers
+ * the 'Relatable' option should display only Relatable burgers
 
 ### BONUS: CHANGE BURGER CATEGORY
   The burger category displays as a select dropdown in the BurgerDisplay component. When a user changes the value of the dropdown, this change should persist.

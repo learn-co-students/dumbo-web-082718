@@ -7,7 +7,7 @@ const BurgerDisplay = (props) => {
       <br/>
       <h1>Insert Burger Name Here</h1>
       <br/>
-      <select onChange={console.log}>
+      <select>
         <option value="Relatable">Relatable</option>
         <option value="Bougie">Bougie</option>
       </select>
