@@ -1,55 +1,29 @@
-## React State, Events, and Forms
+## Setting up react-router-dom
 
-**Don't fall for the trap, these are tools not patterns**
+- npm install --save react-router-dom
+- import {BrowserRouter} from 'react-router-dom'
 
-\*Tools from yesterday
+## BrowserRouter
 
-- Component hierarchy
-- State vs. Props
-- When to use a constructor
-- How to render a different block of code based on some condition
-- JS expressions vs. JS statements
-- When to use {}
+- Listens for route change && makes that information accessible
 
-\*Tools we will learn/expand upon today
+## Route
 
-- Smart Components vs. Presentational Components
-  - Calling props using props.key instead of this.props.key
-- More State
-  - setState
-  - Lifting state
-- This
-  - review
-- Events
-  - Event Handlers in React vs Vanilla JS
-  - Synthetic Events
-    - By React so there's consistency across browsers
-    - setState
-      - mutating state
-- Forms
-  - Controlled vs Uncontrolled (https://reactjs.org/docs/forms.html)
+- Conditionally render a component based on the route
 
-\*Questions Asked in Class:
+## Switch
 
-1. How many React apps have we built outside of labs and lecture?
-2. Why haven't we built more?
-3. What is the difference between state and props?
+- Pick first route that matches
 
-- State can be changed
-  - Props can be changed but not by the component that receives those props. Must be changed from a component above, in the hierarchy
-- Component owns its State
+## Link
 
-4. When should we use state vs props?
+- Changes the url we see in the browser
+- Must have a 'to' prop
 
-- Use state if changes in information does not need to be sent to a component higher in the hierarchy
-- Use props to pass some information to a child component
+## Redirect
 
-5. When should we use constructor to create state?
+- Forces a redirect to a different route
 
-- If we have to run some code immediately before creating state
-- One way of binding This to instance methods
+## Challenge
 
-6. How do we pass props?
-7. **Bonus** How do we change a component's state from outside of that component?
-
-- Events, Event Listeners, etc...
+- Click on a picture of Beyonce and route to a show page

@@ -1,9 +1,11 @@
 const BeyImages = [
   {
+    id: 1,
     name: "All Day Slay",
     img: "https://media.giphy.com/media/3o6gb7cN7bwDxAbnS8/giphy.gif"
   },
   {
+    id: 2,
     name: "I Slay When I Say I Slay",
     img: "https://media.giphy.com/media/10tk2nVzRbNV5u/giphy.gif"
   },
@@ -27,7 +29,7 @@ const JayImages = [
   {
     name: "All Day Slay",
     img: "https://media.giphy.com/media/3o6gb7cN7bwDxAbnS8/giphy.gif"
-  },
+  }
 ];
 
 export { BeyImages, JayImages };

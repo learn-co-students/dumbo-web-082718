@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import BeyCard from "./BeyCard";
 import BeyForm from "./BeyForm";
 import { BeyImages, JayImages } from "../images";
+import { Route } from "react-router-dom";
 
 class BeyContainer extends Component {
   state = {
-    beyImages: BeyImages,
-    renderOrNah: true
+    beyImages: BeyImages
   };
 
   clickHandler = () => {
@@ -19,17 +19,17 @@ class BeyContainer extends Component {
   submitHandler = (e, obj) => {
     e.preventDefault();
     console.log("logging", obj);
-    //spread operator
-    //accomplishes the same thing as a push() but rather than using the same array and changing the content, which js will not recognize as a new array. We are creating a brand new array and then adding the object to that new array
     let newArray = [...this.state.beyImages, obj];
     this.setState({
       beyImages: newArray
     });
   };
 
-  // beyCards() {
-  //   return BeyImages.map(beyObj => <BeyCard />);
-  // }
+  getBeyObj = id => {
+    return this.state.beyImages.find(beyObj => beyObj.id === id);
+    //will return an obj
+  };
+
   render() {
     let beyCards = this.state.beyImages.map(beyObj => (
       <BeyCard
@@ -37,15 +37,28 @@ class BeyContainer extends Component {
         beyObj={beyObj}
         clickHandler={this.clickHandler}
       />
-    )); //[<BeyCard />, <BeyCard />, ...]
+    ));
     return (
       <div>
-        <BeyForm submitHandler={this.submitHandler} />
-        {this.state.renderOrNah ? (
-          beyCards
-        ) : (
-          <h1 onClick={this.clickHandler}>FullSnack Devs</h1>
-        )}
+        <Route
+          path="/bey/:id"
+          render={props => {
+            let id = parseInt(props.match.params.id);
+            return <BeyCard beyObj={this.getBeyObj(id)} />;
+          }}
+        />
+        <Route
+          exact
+          path="/bey"
+          render={() => {
+            return (
+              <div>
+                <BeyForm submitHandler={this.submitHandler} />
+                {beyCards}
+              </div>
+            );
+          }}
+        />
       </div>
     );
   }
