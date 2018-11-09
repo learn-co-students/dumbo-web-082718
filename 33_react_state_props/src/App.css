@@ -30,3 +30,18 @@
     transform: rotate(360deg);
   }
 }
+
+.jayContainer {
+  float: right;
+  width: 50%;
+}
+
+.bayContainer {
+  float: left;
+  width: 50%;
+}
+
+img {
+  width: 30%;
+  height: 50%;
+}

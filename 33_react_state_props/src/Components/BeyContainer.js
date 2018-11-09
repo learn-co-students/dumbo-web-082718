@@ -1,51 +1,43 @@
 import React, { Component } from "react";
-import BeyCard from "./BeyCard";
-import BeyForm from "./BeyForm";
-import { BeyImages, JayImages } from "../images";
+import ImageCard from "./ImageCard";
+import Form from "./Form";
+import { Route } from "react-router-dom";
 
 class BeyContainer extends Component {
   state = {
-    beyImages: BeyImages,
-    renderOrNah: true
+    beyImages: []
   };
 
-  clickHandler = () => {
-    console.log("in clickHandler");
-    this.setState({
-      renderOrNah: !this.state.renderOrNah
-    });
-  };
+  componentDidMount() {
+    fetch("http://localhost:3000/bey")
+      .then(resp => resp.json())
+      .then(beyData =>
+        this.setState({
+          beyImages: beyData
+        })
+      );
+  }
 
-  submitHandler = (e, obj) => {
-    e.preventDefault();
-    console.log("logging", obj);
-    //spread operator
-    //accomplishes the same thing as a push() but rather than using the same array and changing the content, which js will not recognize as a new array. We are creating a brand new array and then adding the object to that new array
+  beySubmitHandler = obj => {
     let newArray = [...this.state.beyImages, obj];
     this.setState({
       beyImages: newArray
     });
   };
 
-  // beyCards() {
-  //   return BeyImages.map(beyObj => <BeyCard />);
-  // }
   render() {
     let beyCards = this.state.beyImages.map(beyObj => (
-      <BeyCard
+      <ImageCard
         key={beyObj.name}
+        artist="bey"
         beyObj={beyObj}
         clickHandler={this.clickHandler}
       />
-    )); //[<BeyCard />, <BeyCard />, ...]
+    )); //[<ImageCard />, <ImageCard />, ...]
     return (
-      <div>
-        <BeyForm submitHandler={this.submitHandler} />
-        {this.state.renderOrNah ? (
-          beyCards
-        ) : (
-          <h1 onClick={this.clickHandler}>FullSnack Devs</h1>
-        )}
+      <div className="beyContainer">
+        <Form artist="bey" beySubmitHandler={this.beySubmitHandler} />
+        {beyCards}
       </div>
     );
   }
