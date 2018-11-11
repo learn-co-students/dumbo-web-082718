@@ -36,18 +36,16 @@ class JayContainer extends Component {
   };
 
   getJayObj = id => {
-    console.log(this.state.jayImages);
+    console.log("in get obj", this.state.jayImages);
     return this.state.jayImages.find(obj => {
       console.log(obj.id);
       return obj.id === id;
     });
+    // console.log("is this here", );
   };
 
-  // jayCards() {
-  //   return JayImages.map(jayObj => <ImageCard />);
-  // }
-  render() {
-    let jayCards = this.state.jayImages.map(jayObj => (
+  jayCards = () => {
+    return this.state.jayImages.map(jayObj => (
       <ImageCard
         key={jayObj.name}
         artist="jay"
@@ -56,6 +54,8 @@ class JayContainer extends Component {
         jayDeleteHandler={this.jayDeleteHandler}
       />
     ));
+  };
+  render() {
     return (
       <div className="jayContainer">
         <Switch>
@@ -85,7 +85,7 @@ class JayContainer extends Component {
               return (
                 <div>
                   <Form artist="jay" jaySubmitHandler={this.jaySubmitHandler} />
-                  {jayCards}
+                  {this.jayCards()}
                 </div>
               );
             }}

@@ -18,6 +18,10 @@ class BeyContainer extends Component {
       );
   }
 
+  getBeyObj = id => {
+    return this.state.beyImages.find(beyObj => beyObj.id === id);
+  };
+
   beySubmitHandler = obj => {
     let newArray = [...this.state.beyImages, obj];
     this.setState({
@@ -33,11 +37,34 @@ class BeyContainer extends Component {
         beyObj={beyObj}
         clickHandler={this.clickHandler}
       />
-    )); //[<ImageCard />, <ImageCard />, ...]
+    ));
     return (
       <div className="beyContainer">
-        <Form artist="bey" beySubmitHandler={this.beySubmitHandler} />
-        {beyCards}
+        <Route
+          path="/bey/:id"
+          render={props => {
+            let id = parseInt(props.match.params.id);
+            return (
+              <ImageCard
+                artist="bey"
+                beyObj={this.getBeyObj(id)}
+                clickHandler={this.clickHandler}
+              />
+            );
+          }}
+        />
+        <Route
+          exact
+          path="/bey"
+          render={() => {
+            return (
+              <div>
+                <Form artist="bey" beySubmitHandler={this.beySubmitHandler} />
+                {beyCards}
+              </div>
+            );
+          }}
+        />
       </div>
     );
   }
