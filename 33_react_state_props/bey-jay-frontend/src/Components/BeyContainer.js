@@ -9,13 +9,15 @@ class BeyContainer extends Component {
   };
 
   componentDidMount() {
-    fetch("http://localhost:3000/bey")
-      .then(resp => resp.json())
-      .then(beyData =>
-        this.setState({
-          beyImages: beyData
-        })
-      );
+    localStorage.getItem("token")
+      ? fetch("http://localhost:3002/bey")
+          .then(resp => resp.json())
+          .then(beyData =>
+            this.setState({
+              beyImages: beyData
+            })
+          )
+      : this.props.history.push("/signup");
   }
 
   getBeyObj = id => {

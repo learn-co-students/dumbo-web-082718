@@ -1,0 +1,2 @@
+class Bey < ApplicationRecord
+end

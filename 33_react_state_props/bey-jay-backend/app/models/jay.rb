@@ -1,0 +1,2 @@
+class Jay < ApplicationRecord
+end

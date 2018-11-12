@@ -9,13 +9,15 @@ class JayContainer extends Component {
   };
 
   componentDidMount() {
-    fetch("http://localhost:3000/jay")
-      .then(resp => resp.json())
-      .then(jayData =>
-        this.setState({
-          jayImages: jayData
-        })
-      );
+    localStorage.getItem("token")
+      ? fetch("http://localhost:3002/jay")
+          .then(resp => resp.json())
+          .then(jayData =>
+            this.setState({
+              jayImages: jayData
+            })
+          )
+      : this.props.history.push("/signup");
   }
 
   jayFavoriteHandler = () => {
