@@ -5,6 +5,7 @@ import JayContainer from "./Components/JayContainer";
 import Home from "./Components/Home";
 import Navbar from "./Components/Navbar";
 import SignUp from "./Components/SignUp";
+import Login from "./Components/Login";
 import { Route, Switch, withRouter } from "react-router-dom";
 
 class App extends Component {
@@ -42,7 +43,7 @@ class App extends Component {
     this.setState({ auth: { currentUser: {} } });
     this.props.history.push("/signup");
   };
-  handleLogin = user_info => {
+  handleSignUp = user_info => {
     fetch("http://localhost:3000/api/v1/users", {
       method: "POST",
       headers: {
@@ -69,7 +70,11 @@ class App extends Component {
           <Route path="/jay" component={JayContainer} />
           <Route
             path="/signup"
-            render={props => <SignUp handleLogin={this.handleLogin} />}
+            render={props => <SignUp handleSignUp={this.handleSignUp} />}
+          />
+          <Route
+            path="/login"
+            render={props => <Login handleLogin={this.handleLogin} />}
           />
           <Route path="/" component={Home} />
         </Switch>

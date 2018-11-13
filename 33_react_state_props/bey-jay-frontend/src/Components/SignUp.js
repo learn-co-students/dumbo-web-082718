@@ -34,7 +34,6 @@ class SignUp extends Component {
   submitHandler = e => {
     e.preventDefault();
     this.handleSignUp();
-    console.log(this.props.history);
     this.props.history.push("/home");
   };
 
